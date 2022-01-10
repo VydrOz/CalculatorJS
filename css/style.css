@@ -1,0 +1,242 @@
+/* Color Variables*/
+:root {
+  --calculator: #c0c0c0;
+  --calculator-shadow: #696969;
+  --disp-background: #fff;
+  --disp-res-font: black;
+  --disp-calc-font: #adadad;
+  --disp-wrong-input: #ff6961;
+  --key-primary: #fff;
+  --key-primary-hover: #eee;
+  --key-operator: #ffb347;
+  --key-del: #ff6961;
+  --key-equ: #77dd77;
+  --key-other: #e5e4e2;
+  --key-shadow: #808080;
+  --key-operator-shadow: #a87022;
+  --key-del-shadow: #822c27;
+  --key-equ-shadow: #428742;
+  --key-other-shadow: #666;
+  --histo-scroll-primary: #f2a941;
+  --histo-scroll-secondary: #c0c0c0;
+  --histo-font-odd: #adadad;
+  --histo-font-even: black;
+  --histo-border: grey;
+}
+[data-theme="dark"] {
+  --calculator: #c0c0c0;
+  --calculator-shadow: #696969;
+  --disp-background: #ffffff;
+  --disp-res-font: black;
+  --disp-calc-font: #adadad;
+  --disp-wrong-input: #ff6961;
+  --key-primary: #fff;
+  --key-primary-hover: #eee;
+  --key-operator: #ffb347;
+  --key-del: #ff6961;
+  --key-equ: #77dd77;
+  --key-other: #e5e4e2;
+  --key-shadow: #808080;
+  --key-operator-shadow: #a87022;
+  --key-del-shadow: #822c27;
+  --key-equ-shadow: #428742;
+  --key-other-shadow: #666;
+  --histo-scroll-primary: #f2a941;
+  --histo-scroll-secondary: #c0c0c0;
+}
+
+/* Basic Html */
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 2% auto;
+  -webkit-user-select: none;qqqqqq
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+}
+
+/* Calculator */
+.calculator {
+  background-color: var(--calculator);
+  padding: 22px;
+  width: 290px;
+  height: 430px;
+  border-radius: 0.8em;
+  box-shadow: 0 0.8em 0 0.1em var(--calculator-shadow);
+}
+
+/* Calculator : Display */
+.display {
+  text-align: right;
+  padding: 0 8px 0 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.3) inset;
+  box-sizing: border-box;
+  border: none;
+  height: 70px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  direction: rtl;
+  white-space: nowrap;
+  word-wrap:break-word;
+   /*experimental custom scrollbar with firefox only
+    see: https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Scrollbars*/
+  scrollbar-color: rgba(0, 0, 0, 0.2) var(--disp-scroll-primary);
+  scrollbar-width: thin;
+}
+#current-calc, #result {
+  unicode-bidi: bidi-override;
+  direction: ltr;
+}
+#current-calc {
+  font-size: 14px;
+  line-height: 30px;
+  height: 30px;
+  color: var(--disp-calc-font);
+  padding-right: 2px;
+}
+#result {
+  font-size: 26px;
+  line-height: 34px;
+  height: 34px;
+  color: var(--disp-res-font);
+}
+.wrong-value {
+  animation-name: wrong-value;
+  animation-duration: 0.3s;
+  animation-iteration-count: 4;
+}
+@keyframes wrong-value {
+  0% {
+    box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.3) inset;
+  }
+  50% {
+    box-shadow: 0 2px 2px 4px var(--disp-wrong-input) inset;
+  }
+  100 {
+    box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.3) inset;
+  }
+}
+
+/* Carlculator : Display > Scrollbar */
+.display::-webkit-scrollbar {
+  height: 6px;
+}
+.display::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.display::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: grey; 
+}
+
+/* Calculator : Keys */
+.row {
+  display: flex;
+  gap: 20px;
+}
+.row span {
+  line-height: 58px;
+  width: 58px;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 18px;
+  background-color: var(--key-primary);
+  border-radius: 0.2em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 0 1px var(--key-shadow);
+  transition: 0.8s;
+  cursor: pointer;
+}
+.row span:hover {
+  filter: brightness(0.9);
+}
+#num:active {
+  transition: 0.08s;
+  box-shadow: 0 2px 0 1px var(--key-shadow) inset;
+}
+#operator {
+  background-color: var(--key-operator);
+  box-shadow: 0 4px 0 1px var(--key-operator-shadow);
+}
+#operator:active {
+  transition: 0.08s;
+  box-shadow: 0 2px 0 1px var(--key-operator-shadow) inset;
+}
+#del {
+  background-color: var(--key-del);
+  box-shadow: 0 4px 0 1px var(--key-del-shadow);
+}
+#del:active {
+  transition: 0.08s;
+  box-shadow: 0 2px 0 1px var(--key-del-shadow) inset;
+}
+#equ {
+  background-color: var(--key-equ);
+  box-shadow: 0 4px 0 1px var(--key-equ-shadow);
+}
+#equ:active {
+  transition: 0.08s;
+  box-shadow: 0 2px 0 1px var(--key-equ-shadow) inset;
+}
+#other {
+  background-color: var(--key-other);
+  box-shadow: 0 4px 0 1px var(--key-other-shadow);
+}
+#other:active {
+  transition: 0.08s;
+  box-shadow: 0 2px 0 1px var(--key-other-shadow) inset;
+}
+
+/* Histo Calcul */
+.histo-calcul {
+  border: 2px solid var(--histo-border);
+  padding: 10px 10px;
+  text-align: end;
+  width: 250px;
+  height: 480px;
+  box-sizing: border-box;
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2) inset;
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap:break-word;
+  
+  /*experimental custom scrollbar with firefox only
+    see: https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Scrollbars*/
+  scrollbar-color: var(--histo-scroll-primary) var(--histo-scroll-secondary);
+  scrollbar-width: thin;
+}
+.histo-calcul span:nth-child(odd) {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--histo-font-odd);
+  font-size: 12px;
+}
+.histo-calcul span:nth-child(even) {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--histo-font-even);
+  font-size: 16px;
+}
+
+/* Histo Calcul : Scrollbar*/
+.histo-calcul::-webkit-scrollbar {
+  width:5px;
+}
+.histo-calcul::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: var(--histo-scroll-secondary);
+}
+.histo-calcul::-webkit-scrollbar-thumb {
+  border-radius:5px;
+  background-color: var(--histo-scroll-primary); 
+}
+
+
