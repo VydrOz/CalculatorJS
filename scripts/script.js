@@ -61,15 +61,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   document.addEventListener('keydown', keyDownEvent);
+  document.addEventListener('keyup', keyUpEvent);
 });
 
 // add keybord input mapping
 function keyDownEvent(event) {
   let elm = document.querySelector(`[data-key='${event.key}']`)
-  console.log(event.key);
   if(elm)
   {
-    elm.click();  
+    elm.click();
+    elm.classList.add("active");
+  }
+}
+
+function keyUpEvent(event) {
+  let elm = document.querySelector(`[data-key='${event.key}']`)
+  if(elm)
+  {
+    elm.classList.remove("active");
   }
 }
 
