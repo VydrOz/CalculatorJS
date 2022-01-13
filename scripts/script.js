@@ -40,7 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
       case "other":
         if(key.innerText === "←") {
           key.addEventListener("click", () => {
-            dispResult.textContent = dispResult.textContent.length === 1 ? "0" : dispResult.textContent.replace(/.$/,'');
+            dispResult.textContent = 
+              dispResult.textContent.length === 1 || 
+              dispResult.textContent.length === 2 && dispResult.textContent[0] === "-" 
+              ? "0" : dispResult.textContent.replace(/.$/,'');
             switchOperator = dispCurrCalc.textContent !== "";
           });
         } else if (key.innerText === "±") {
