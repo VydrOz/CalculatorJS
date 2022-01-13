@@ -161,6 +161,7 @@ body {
 #num:active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-shadow) inset;
+  font-size: 16px;
 }
 #operator {
   background-color: var(--key-operator);
@@ -169,6 +170,7 @@ body {
 #operator:active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-operator-shadow) inset;
+  font-size: 16px;
 }
 #del {
   background-color: var(--key-del);
@@ -177,6 +179,7 @@ body {
 #del:active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-del-shadow) inset;
+  font-size: 16px;
 }
 #equ {
   background-color: var(--key-equ);
@@ -185,6 +188,7 @@ body {
 #equ:active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-equ-shadow) inset;
+  font-size: 16px;
 }
 #other {
   background-color: var(--key-other);
@@ -193,6 +197,7 @@ body {
 #other:active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-other-shadow) inset;
+  font-size: 16px;
 }
 
 /* Histo Calcul */
