@@ -1,15 +1,41 @@
 /* Color Variables*/
 :root {
+  --body-background: #353839;
+  --calculator: #808080;
+  --calculator-shadow: #606060;
+  --disp-background: #ddd;
+  --disp-res-font: black;
+  --disp-calc-font: #606060;
+  --disp-wrong-input: #c93e3e;
+  --disp-scroll-primary: #606060;
+  --key-primary: #dddddd;
+  --key-operator: #ffa343;
+  --key-del: #de5952;
+  --key-equ: #3cb371;
+  --key-other: #bdbdbd;
+  --key-shadow: #606060;
+  --key-operator-shadow: #a87022;
+  --key-del-shadow: #822c27;
+  --key-equ-shadow: #428742;
+  --key-other-shadow: #555;
+  --histo-scroll-primary: #f2a941;
+  --histo-scroll-secondary: #808080;
+  --histo-font-odd: #adadad;
+  --histo-font-even: white;
+  --histo-border: #aaa;
+}
+[data-theme="light"] { 
+  --body-background: #fff;
   --calculator: #c0c0c0;
   --calculator-shadow: #696969;
   --disp-background: #fff;
   --disp-res-font: black;
   --disp-calc-font: #adadad;
   --disp-wrong-input: #ff6961;
+  --disp-scroll-primary: grey;
   --key-primary: #fff;
-  --key-primary-hover: #eee;
   --key-operator: #ffb347;
-  --key-del: #ff6961;
+  --key-del: #f08080;
   --key-equ: #77dd77;
   --key-other: #e5e4e2;
   --key-shadow: #808080;
@@ -23,42 +49,23 @@
   --histo-font-even: black;
   --histo-border: grey;
 }
-[data-theme="dark"] {
-  --calculator: #c0c0c0;
-  --calculator-shadow: #696969;
-  --disp-background: #ffffff;
-  --disp-res-font: black;
-  --disp-calc-font: #adadad;
-  --disp-wrong-input: #ff6961;
-  --key-primary: #fff;
-  --key-primary-hover: #eee;
-  --key-operator: #ffb347;
-  --key-del: #ff6961;
-  --key-equ: #77dd77;
-  --key-other: #e5e4e2;
-  --key-shadow: #808080;
-  --key-operator-shadow: #a87022;
-  --key-del-shadow: #822c27;
-  --key-equ-shadow: #428742;
-  --key-other-shadow: #666;
-  --histo-scroll-primary: #f2a941;
-  --histo-scroll-secondary: #c0c0c0;
-}
 
 /* Basic Html */
 body {
   font-family: "Source Sans Pro", sans-serif;
-  margin: 2% auto;
+  background-color: var(--body-background);
   -webkit-user-select: none;qqqqqq
   -moz-user-select: none;
   -ms-user-select: none;
+  transition: background 1.8s;
 }
 
 /* Container */
 .container {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  gap: 26px;
+  gap: 34px;
 }
 
 /* Calculator */
@@ -66,16 +73,17 @@ body {
   background-color: var(--calculator);
   padding: 22px;
   width: 290px;
-  height: 430px;
+  height: 420px;
   border-radius: 0.8em;
   box-shadow: 0 0.8em 0 0.1em var(--calculator-shadow);
+  transition: background 1.8s;
 }
 
 /* Calculator : Display */
 .display {
   text-align: right;
   padding: 0 8px 0 8px;
-  background-color: #ffffff;
+  background-color: var(--disp-background);
   box-shadow: 0 2px 2px 3px rgba(0, 0, 0, 0.3) inset;
   box-sizing: border-box;
   border: none;
@@ -85,6 +93,7 @@ body {
   direction: rtl;
   white-space: nowrap;
   word-wrap:break-word;
+  transition: 0.8s, background 1.8s;
    /*experimental custom scrollbar with firefox only
     see: https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Scrollbars*/
   scrollbar-color: rgba(0, 0, 0, 0.2) var(--disp-scroll-primary);
@@ -93,6 +102,7 @@ body {
 #current-calc, #result {
   unicode-bidi: bidi-override;
   direction: ltr;
+  transition: color 1.8s;
 }
 #current-calc {
   font-size: 14px;
@@ -133,7 +143,7 @@ body {
 }
 .display::-webkit-scrollbar-thumb {
   border-radius: 20px;
-  background-color: grey; 
+  background-color: var(--disp-scroll-primary); 
 }
 
 /* Calculator : Keys */
@@ -142,17 +152,17 @@ body {
   gap: 20px;
 }
 .row span {
-  line-height: 58px;
-  width: 58px;
+  line-height: 56px;
+  width: 56px;
   margin-top: 12px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   background-color: var(--key-primary);
   border-radius: 0.2em;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-bottom-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 0 1px var(--key-shadow);
-  transition: 0.8s;
+  transition: 0.8s,  font-size 0s;
   cursor: pointer;
 }
 .row span:hover {
@@ -161,7 +171,7 @@ body {
 #num:active, #num.active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-shadow) inset;
-  font-size: 16px;
+  font-size: 18px;
 }
 #operator {
   background-color: var(--key-operator);
@@ -170,7 +180,7 @@ body {
 #operator:active, #operator.active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-operator-shadow) inset;
-  font-size: 16px;
+  font-size: 18px;
 }
 #del {
   background-color: var(--key-del);
@@ -179,7 +189,7 @@ body {
 #del:active, #del.active{
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-del-shadow) inset;
-  font-size: 16px;
+  font-size: 18px;
 }
 #equ {
   background-color: var(--key-equ);
@@ -188,7 +198,7 @@ body {
 #equ:active, #equ.active{
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-equ-shadow) inset;
-  font-size: 16px;
+  font-size: 18px;
 }
 #other {
   background-color: var(--key-other);
@@ -197,22 +207,21 @@ body {
 #other:active, #other.active {
   transition: 0.08s;
   box-shadow: 0 2px 0 1px var(--key-other-shadow) inset;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 /* Histo Calcul */
-.histo-calcul {
+.histo-calcul, .empty {
   border: 2px solid var(--histo-border);
   padding: 10px 10px;
   text-align: end;
-  width: 250px;
-  height: 480px;
+  width: 290px;
+  height: 420px;
   box-sizing: border-box;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2) inset;
   overflow-y: auto;
   overflow-x: hidden;
   word-wrap:break-word;
-  
   /*experimental custom scrollbar with firefox only
     see: https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Scrollbars*/
   scrollbar-color: var(--histo-scroll-primary) var(--histo-scroll-secondary);
@@ -222,13 +231,20 @@ body {
   display: block;
   margin-bottom: 5px;
   color: var(--histo-font-odd);
+  transition: color 1.8s;
   font-size: 12px;
 }
 .histo-calcul span:nth-child(even) {
   display: block;
   margin-bottom: 16px;
   color: var(--histo-font-even);
+  transition: color 1.8s;
   font-size: 16px;
+}
+
+/*empty div to center*/
+.container .empty {
+  visibility: hidden;
 }
 
 /* Histo Calcul : Scrollbar*/
@@ -242,4 +258,33 @@ body {
 .histo-calcul::-webkit-scrollbar-thumb {
   border-radius:5px;
   background-color: var(--histo-scroll-primary); 
+}
+
+/*Bottom button*/
+.toolsbar {
+  height: 45px;
+  margin-top: 7px;
+  text-align: center;
+}
+#theme-switch {
+  margin: 0 4px 0 4px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 2em;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  background-color: var(--calculator);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 0 1px var(--key-shadow);
+  transition: 0.8s,  font-size 0s, content 10s;
+}
+#theme-switch:active {
+  transition: 0.08s;
+  box-shadow: 0 1px 0 1px var(--key-shadow) inset;
+  font-size: 16px;
+}
+#theme-switch:hover {
+  filter: brightness(0.9);
 }
