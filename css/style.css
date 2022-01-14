@@ -266,7 +266,7 @@ body {
   margin-top: 7px;
   text-align: center;
 }
-#theme-switch {
+#theme-switch, #link {
   margin: 0 4px 0 4px;
   cursor: pointer;
   font-size: 18px;
@@ -280,11 +280,11 @@ body {
   box-shadow: 0 2px 0 1px var(--key-shadow);
   transition: 0.8s,  font-size 0s, content 10s;
 }
-#theme-switch:active {
+#theme-switch:active, #link:active {
   transition: 0.08s;
   box-shadow: 0 1px 0 1px var(--key-shadow) inset;
   font-size: 16px;
 }
-#theme-switch:hover {
+#theme-switch:hover, #link:hover {
   filter: brightness(0.9);
 }
