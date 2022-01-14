@@ -102,6 +102,7 @@ body {
 #current-calc, #result {
   unicode-bidi: bidi-override;
   direction: ltr;
+  transition: color 1.8s;
 }
 #current-calc {
   font-size: 14px;
