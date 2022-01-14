@@ -1,5 +1,5 @@
 /* Color Variables*/
-:root{
+:root {
   --body-background: #353839;
   --calculator: #808080;
   --calculator-shadow: #606060;
@@ -54,7 +54,6 @@
 body {
   font-family: "Source Sans Pro", sans-serif;
   background-color: var(--body-background);
-  margin: 2% auto;
   -webkit-user-select: none;qqqqqq
   -moz-user-select: none;
   -ms-user-select: none;
@@ -63,9 +62,10 @@ body {
 
 /* Container */
 .container {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  gap: 26px;
+  gap: 34px;
 }
 
 /* Calculator */
@@ -73,7 +73,7 @@ body {
   background-color: var(--calculator);
   padding: 22px;
   width: 290px;
-  height: 430px;
+  height: 420px;
   border-radius: 0.8em;
   box-shadow: 0 0.8em 0 0.1em var(--calculator-shadow);
   transition: background 1.8s;
@@ -211,12 +211,12 @@ body {
 }
 
 /* Histo Calcul */
-.histo-calcul {
+.histo-calcul, .empty {
   border: 2px solid var(--histo-border);
   padding: 10px 10px;
   text-align: end;
-  width: 250px;
-  height: 480px;
+  width: 290px;
+  height: 420px;
   box-sizing: border-box;
   box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2) inset;
   overflow-y: auto;
@@ -242,6 +242,11 @@ body {
   font-size: 16px;
 }
 
+/*empty div to center*/
+.container .empty {
+  visibility: hidden;
+}
+
 /* Histo Calcul : Scrollbar*/
 .histo-calcul::-webkit-scrollbar {
   width:5px;
@@ -253,4 +258,33 @@ body {
 .histo-calcul::-webkit-scrollbar-thumb {
   border-radius:5px;
   background-color: var(--histo-scroll-primary); 
+}
+
+/*Bottom button*/
+.toolsbar {
+  height: 45px;
+  margin-top: 7px;
+  text-align: center;
+}
+#theme-switch {
+  margin: 0 4px 0 4px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 2em;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  background-color: var(--calculator);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 0 1px var(--key-shadow);
+  transition: 0.8s,  font-size 0s, content 10s;
+}
+#theme-switch:active {
+  transition: 0.08s;
+  box-shadow: 0 1px 0 1px var(--key-shadow) inset;
+  font-size: 16px;
+}
+#theme-switch:hover {
+  filter: brightness(0.9);
 }
