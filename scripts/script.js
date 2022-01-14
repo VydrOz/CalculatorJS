@@ -4,6 +4,7 @@ const display = document.getElementsByClassName("display");
 const dispResult = document.getElementById("result");
 const dispCurrCalc = document.getElementById("current-calc");
 const histoCalc = document.getElementsByClassName("histo-calcul")[0];
+const toggleSwitch = document.getElementById('theme-switch');
 // arrow function
 const roundNumber = (n, d) => Math.round(n * Math.pow(10, d)) / Math.pow(10, d);
 const checkForBrackets = (n) => n >= 0 ? n : `(${n})`;
@@ -65,6 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
   
   document.addEventListener('keydown', keyDownEvent);
   document.addEventListener('keyup', keyUpEvent);
+  
+  //theme switch
+  toggleSwitch.addEventListener('click', () => {
+    let hasTheme = document.documentElement.getAttribute('data-theme') == null;
+    hasTheme ? document.documentElement.setAttribute('data-theme', 'light') : document.documentElement.removeAttribute('data-theme', 'light');
+    toggleSwitch.textContent = hasTheme ? "🌙" : "🌞";
+  }, false);
 });
 
 // add keybord input mapping
