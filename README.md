@@ -1,4 +1,4 @@
-# Javascript-Calculator
+# CalculatorJS
 Basic calculator to practice HTML / CSS / JS
 
 💡 Keyboard keys binded to buttons calculator ! (special tips: "±" is binded with key "?")
